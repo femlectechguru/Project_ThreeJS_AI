@@ -71,12 +71,17 @@ const customizer = () => {
           prompt,
         })
       })
+      if (!response.ok) {
+        throw new Error('Failed to fetch data from the server');
+      }
+
 
       const data = await response.json();
 
       handleDecals(type, `data:image/png;base64,${data.photo}`)
     } catch (error) {
-      alert(error)
+      alert('An error occurred while processing the request');
+      console.error('API Request Error:', error);
     } finally {
       setGeneratingImg(false);
       setActiveEditorTab("");
@@ -142,6 +147,8 @@ const handleActiveFilterTab = (tabName) => {
       setActiveEditorTab("");
 
     })
+    
+    
   }
   return (
     <AnimatePresence>
