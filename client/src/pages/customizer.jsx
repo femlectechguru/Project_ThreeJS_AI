@@ -48,7 +48,7 @@ const customizer = () => {
         generatingImg={generatingImg}
         handleSubmit={handleSubmit}
 
-         />
+      />
       
       default:
         return null;
